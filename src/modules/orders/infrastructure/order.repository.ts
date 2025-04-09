@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from '../dto/create-order.dto';
 import { Order } from '../domain/order.entity';
 import { OrderItem } from '../domain/order-item.entity';
-import { PrismaService } from './../../../prisma.services';
+import { PrismaService } from '../../../prisma.services';
 
 @Injectable()
-export class PrismaOrderRepository  {
+export class OrderRepository  {
   constructor(private readonly prisma: PrismaService) {}
+
 
   async create(dto: CreateOrderDto): Promise<Order> {
     const totalAmount = dto.items.reduce(
