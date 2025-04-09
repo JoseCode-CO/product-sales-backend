@@ -1,4 +1,5 @@
-export class ProductDto {
+export class ListProductDto {
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -6,8 +7,10 @@ export class ProductDto {
   brand: string;
   images: string[];
   stock: number;
-  discount?: number;
-  salesCount?: number;
+  discount: number;
   code: string;
-  status: 'active' | 'inactive' | 'archived';
+  salesCount: number;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

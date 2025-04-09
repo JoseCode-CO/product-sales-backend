@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { OrdersController } from './controllers/orders.controller';
 import { CreateOrderUseCase } from './application/use-cases/create-order.use-case';
 import { ListOrdersUseCase } from './application/use-cases/list-orders.use-case';
-import { PrismaOrderRepository } from './infrastructure/prisma-order.repository';
+import { OrderRepository } from './infrastructure/order.repository';
 import { PrismaService } from './../../prisma.services';
 
 @Module({
@@ -11,7 +11,7 @@ import { PrismaService } from './../../prisma.services';
   providers: [
     CreateOrderUseCase,
     ListOrdersUseCase,
-    PrismaOrderRepository,
+    OrderRepository,
     PrismaService
   ]
 })

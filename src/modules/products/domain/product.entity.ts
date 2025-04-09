@@ -15,4 +15,16 @@ export class Product {
       public readonly createdAt: Date,
       public updatedAt: Date
     ) {}
+
+    isActive(): boolean {
+      return this.status === 'active';
+    }
+  
+    hasStock(): boolean {
+      return this.stock > 0;
+    }
+  
+    getFinalPrice(): number {
+      return this.discount ? this.price - this.discount : this.price;
+    }
   }

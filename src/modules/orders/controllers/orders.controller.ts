@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post,UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreateOrderDto } from '../dto/create-order.dto';
 import { CreateOrderUseCase } from '../application/use-cases/create-order.use-case';
 import { ListOrdersUseCase } from '../application/use-cases/list-orders.use-case';
+import { OrderResponseDto } from '../dto/order-response.dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -10,14 +11,24 @@ export class OrdersController {
     private readonly listOrders: ListOrdersUseCase,
   ) {}
 
-  @Post()
-  create(@Body() dto: CreateOrderDto) {
-    return this.createOrder.execute(dto);
-  }
 
   @Get()
-  findAll() {
-    return this.listOrders.execute();
+  async findAll(): Promise<{ data: OrderResponseDto[] }> {
+    const orders = await this.listOrders.execute();
+    return {
+      data: orders.map((p) => ({ ...p })),
+    };
   }
+  
+  @Post()
+  @UsePipes(new ValidationPipe())
+  async create(@Body() data: CreateOrderDto): Promise<{ data: CreateOrderDto }> {
+      const product = await this.createOrder.execute(data);
+      return {
+        data: { ...product },
+      };
+    }
+
+
 }
 
