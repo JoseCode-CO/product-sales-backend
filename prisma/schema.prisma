@@ -41,21 +41,19 @@ enum ProductStatus {
 
 
 model Order {
-  id             String       @id @default(uuid())
-  userId         String
-  totalAmount    Float
-  status         OrderStatus
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  id          String       @id @default(uuid())
+  userId      String
+  totalAmount Float
+  status      OrderStatus
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
-  items          OrderItem[]
-  //transaction    Transaction? @relation(fields: [transactionId], references: [id])
-  transactionId  String?
+  items       OrderItem[]
+  transaction Transaction?
 
   @@map("orders")
 }
 
-//Enum para el estado de la orden
 enum OrderStatus {
   active
   inactive
@@ -71,4 +69,36 @@ model OrderItem {
 
   product   Product  @relation(fields: [productId], references: [id])
   order     Order    @relation(fields: [orderId], references: [id])
+
+  @@map("order_items")
+}
+
+model Transaction {
+  id              String              @id @default(uuid())
+  orderId         String              @unique
+  amount          Float
+  discount        Float               @default(0)
+  fee             Float
+  method          PaymentMethod
+  status          TransactionStatus
+  createdAt       DateTime            @default(now())
+
+  deliveryName    String
+  deliveryPhone   String
+  deliveryCity    String
+  deliveryAddress String
+
+  order           Order               @relation(fields: [orderId], references: [id])
+
+  @@map("transactions")
+}
+
+enum PaymentMethod {
+  credit_card
+}
+
+enum TransactionStatus {
+  pending
+  completed
+  failed
 }
