@@ -19,41 +19,7 @@ El proyecto sigue una arquitectura limpia inspirada en los principios de Robert 
 
 
 
-src
-│
-├── application
-│   └── use-cases
-│       ├── create-order.use-case.ts
-│       └── list-orders.use-case.ts
-│
-├── domain
-│   ├── entities
-│   │   ├── order.entity.ts
-│   │   ├── product.entity.ts
-│   │   └── transaction.entity.ts
-│   └── repositories
-│       ├── order.repository.ts
-│       ├── product.repository.ts
-│       └── transaction.repository.ts
-│
-├── dto
-│   ├── create-order.dto.ts
-│   └── order-response.dto.ts
-│
-├── infrastructure
-│   ├── controllers
-│   │   └── orders.controller.ts
-│   └── services
-│       ├── prisma.service.ts
-│       └── payment.service.ts
-│
-├── prisma
-│   ├── schema.prisma
-│   └── migrations/
-│
-├── app.module.ts
-├── main.ts
-└── app.controller.ts
+![Arquitectura del proyecto](./arquitectura.PNG)
 
 1. Dominio (Domain)
 
