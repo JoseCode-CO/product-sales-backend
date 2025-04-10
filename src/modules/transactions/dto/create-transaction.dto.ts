@@ -1,15 +1,11 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsEnum,
-  Min,
-} from 'class-validator';
-import { PaymentMethod } from '../domain/entities/transaction.entity';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, IsEmail, Min } from 'class-validator';
+
+export enum PaymentMethod {
+  CARD = 'CARD',
+}
 
 export class CreateTransactionDto {
-  @IsString()
-  @IsNotEmpty()
+
   orderId: string;
 
   @IsNumber()
@@ -42,4 +38,26 @@ export class CreateTransactionDto {
   @IsString()
   @IsNotEmpty()
   deliveryAddress: string;
+
+  paymentSourceId: string;
+
+  @IsEmail()
+  customerEmail: string;
+
+  @IsString()
+  @IsNotEmpty()
+  currency: 'COP' | 'USD';
+
+  @IsOptional()
+  @IsString()
+  description?: string;
+
+  // 🆕 Campos agregados
+  @IsString()
+  @IsNotEmpty()
+  customerName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  customerIdentification: string;
 }

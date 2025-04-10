@@ -74,21 +74,28 @@ model OrderItem {
 }
 
 model Transaction {
-  id              String              @id @default(uuid())
-  orderId         String              @unique
-  amount          Float
-  discount        Float               @default(0)
-  fee             Float
-  method          PaymentMethod
-  status          TransactionStatus
-  createdAt       DateTime            @default(now())
+  id                      String              @id @default(uuid())
+  orderId                 String              @unique
+  amount                  Float
+  discount                Float               @default(0)
+  fee                     Float
+  method                  PaymentMethod
+  status                  TransactionStatus
+  createdAt               DateTime            @default(now())
 
-  deliveryName    String
-  deliveryPhone   String
-  deliveryCity    String
-  deliveryAddress String
+  deliveryName            String
+  deliveryPhone           String
+  deliveryCity            String
+  deliveryAddress         String
 
-  order           Order               @relation(fields: [orderId], references: [id])
+  customerName            String
+  customerIdentification  String
+  customerEmail           String
+  currency                String
+  paymentSourceId         String
+  description             String?           
+
+  order                   Order               @relation(fields: [orderId], references: [id])
 
   @@map("transactions")
 }

@@ -7,10 +7,7 @@ import { TransactionStatus } from '../../domain/entities/transaction.entity';
 export class CreateTransactionUseCase {
   constructor(private readonly repo: TransactionRepository) {}
 
-  async execute(dto: CreateTransactionDto) {
-    return this.repo.create({
-      ...dto,
-      status: TransactionStatus.PENDING, // inicial
-    });
+  async execute(dto: CreateTransactionDto): Promise<any> {
+    return this.repo.createTransaction(dto);
   }
 }
