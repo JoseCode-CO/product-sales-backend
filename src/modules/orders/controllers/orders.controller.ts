@@ -3,6 +3,7 @@ import { CreateOrderDto } from '../dto/create-order.dto';
 import { CreateOrderUseCase } from '../application/use-cases/create-order.use-case';
 import { ListOrdersUseCase } from '../application/use-cases/list-orders.use-case';
 import { OrderResponseDto } from '../dto/order-response.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('orders')
 export class OrdersController {

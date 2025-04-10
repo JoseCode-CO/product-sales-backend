@@ -5,6 +5,7 @@ import { ListProductDto } from '../dto/product-response.dto';
 import { Product } from '../domain/product.entity';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { CreateProductsUseCase } from '../application/use-cases/create-products.use-case';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('products')
 export class ProductsController {

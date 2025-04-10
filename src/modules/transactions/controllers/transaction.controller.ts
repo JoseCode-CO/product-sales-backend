@@ -3,6 +3,7 @@ import { CreateTransactionDto } from '../dto/create-transaction.dto';
 import { CreateCardDto } from '../dto/create-token-card.dto';
 import { CreateTransactionUseCase } from '../application/use-cases/create-transaction.use-case';
 import { TokenCardUseCase } from '../application/use-cases/token-card-transaction.use-case';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('transactions')
 export class TransactionController {
