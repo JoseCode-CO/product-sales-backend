@@ -52,7 +52,6 @@ export class CreateTransactionDto {
   @IsString()
   description?: string;
 
-  // 🆕 Campos agregados
   @IsString()
   @IsNotEmpty()
   customerName: string;

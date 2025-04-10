@@ -1,5 +1,5 @@
 import { IsEnum, IsString, IsNotEmpty, IsNumber, IsArray, IsOptional, IsInt, Min } from 'class-validator';
-import { ProductStatus } from '@prisma/client'; // 👈 Importa el enum desde Prisma Client
+import { ProductStatus } from '@prisma/client'; 
 
 export class CreateProductDto {
   @IsString()
@@ -40,5 +40,5 @@ export class CreateProductDto {
   code: string;
 
   @IsEnum(ProductStatus)
-  status: ProductStatus; // 👈 Ahora es tipo enum, no string
+  status: ProductStatus; 
 }

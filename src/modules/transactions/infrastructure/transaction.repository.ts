@@ -105,11 +105,11 @@ export class TransactionRepository {
         customer_email: dto.customerEmail,
         payment_method: {
           type: 'CARD',
-          token: dto.cardToken, 
+          //token: dto.cardToken, 
           installments: 1,
         },
         reference: dto.orderId,
-        signature: dto.signature
+       // signature: dto.signature
       };
     
       const response = await this.httpService.axiosRef.post(
